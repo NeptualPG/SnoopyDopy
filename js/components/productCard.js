@@ -12,6 +12,7 @@
  */
 
 import { escapeHtml, itemCountLabel, filterByOwner, copToUsd, formatCop, formatUsd } from "../utils/helpers.js";
+import { openLightbox } from "./lightbox.js";
 
 // ── Star helpers ───────────────────────────────────────────────────────────
 
@@ -39,17 +40,17 @@ function resolveImages(product) {
   return [];
 }
 
-function buildStaticImage(src, name) {
+function buildStaticImage(src, name, position = "center") {
   return `
     <div
       class="card-img"
       role="img"
       aria-label="${escapeHtml(name)} product image"
-      style="background-image: url('${escapeHtml(src)}')"
+      style="background-image: url('${escapeHtml(src)}'); background-position: ${position};"
     ></div>`;
 }
 
-function buildGallery(images, name) {
+function buildGallery(images, name, position = "center") {
   const dots = images
     .map((_, i) =>
       `<button
@@ -67,7 +68,7 @@ function buildGallery(images, name) {
         class="card-img gallery-img"
         role="img"
         aria-label="${escapeHtml(name)} — image 1 of ${images.length}"
-        style="background-image: url('${escapeHtml(images[0])}')"
+        style="background-image: url('${escapeHtml(images[0])}'); background-position: ${position};"
       ></div>
       <button class="gallery-arrow gallery-prev" aria-label="Previous image" type="button">&#8249;</button>
       <button class="gallery-arrow gallery-next" aria-label="Next image"     type="button">&#8250;</button>
@@ -75,7 +76,7 @@ function buildGallery(images, name) {
     </div>`;
 }
 
-function initGallery(card, images, name) {
+function initGallery(card, images, name, position = "center") {
   if (images.length <= 1) return;
 
   const frame   = card.querySelector(".gallery-img");
@@ -88,7 +89,8 @@ function initGallery(card, images, name) {
     current = (idx + images.length) % images.length;
     frame.classList.add("gallery-transitioning");
     setTimeout(() => {
-      frame.style.backgroundImage = `url('${escapeHtml(images[current])}')`;
+      frame.style.backgroundImage    = `url('${escapeHtml(images[current])}')`;
+      frame.style.backgroundPosition = position;
       frame.setAttribute("aria-label", `${name} — image ${current + 1} of ${images.length}`);
       frame.classList.remove("gallery-transitioning");
     }, 150);
@@ -165,7 +167,7 @@ function initHelpful(card, initialCount) {
  * @returns {HTMLElement}
  */
 export function createProductCard(product, animIndex = 0) {
-  const { owner, name, description, price, rating, reviews = [], url = "" } = product;
+  const { owner, name, description, price, rating, reviews = [], url = "", imagePosition = "center" } = product;
 
   const images      = resolveImages(product);
   const isGallery   = images.length > 1;
@@ -197,8 +199,8 @@ export function createProductCard(product, animIndex = 0) {
       >VIEW PRODUCT ↗</a>` : "";
 
   const imageBlock = isGallery
-    ? buildGallery(images, name)
-    : buildStaticImage(images[0] ?? "", name);
+    ? buildGallery(images, name, imagePosition)
+    : buildStaticImage(images[0] ?? "", name, imagePosition);
 
   const card = document.createElement("article");
   card.className = "card animate-card";
@@ -227,8 +229,21 @@ export function createProductCard(product, animIndex = 0) {
     </div>
   `;
 
-  if (isGallery) initGallery(card, images, name);
+  if (isGallery) initGallery(card, images, name, imagePosition);
   if (featReview) initHelpful(card, featReview.helpful);
+
+  // ── Lightbox: click on image opens full-screen viewer ────
+  const imgEl = card.querySelector(".card-img");
+  if (imgEl) {
+    imgEl.style.cursor = "zoom-in";
+    imgEl.addEventListener("click", () => {
+      // find the current visible index from gallery state, default 0
+      const dots = card.querySelectorAll(".gallery-dot");
+      let startIdx = 0;
+      dots.forEach((dot, i) => { if (dot.classList.contains("active")) startIdx = i; });
+      openLightbox(images, startIdx, imagePosition);
+    });
+  }
 
   return card;
 }

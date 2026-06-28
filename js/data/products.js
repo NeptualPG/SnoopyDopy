@@ -49,61 +49,23 @@ export const PRODUCTS = [
   {
     id: "p04",
     owner: "gf",
-    name: "HOLO CLUTCH V2",
-    price: 556500,
+    name: "MINISO — PELUCIA BT21 CHIMMY",
+    price: 40064,
     rating: 5,
-    description: "Holographic clutch with violet LED trim. Limited edition.",
-    url: "",
+    description: "Confección suave de felpa, destaca por su gran durabilidad.",
+    url: "https://www.mercadolibre.com.co/aa-miniso-pelucia-bt21-chimmy-pelucia-amarelo-15x11x23-cm-/p/MCO2045229580?pdp_filters=item_id%3AMCO1982204889&matt_tool=15401541#origin=share&sid=share&wid=MCO1982204889&action=copy",
+    imagePosition: "top",
     reviews: [
-      {
-        author: "Eimy",
-        stars: 5,
-        text: "I get compliments every time I carry this. The holographic effect under club lights is unreal.",
-        helpful: 29
-      }
+            {
+              author: "Neptual",   // your name
+              stars: 5,            // 1 to 5
+              text: "Gran compañero de almohada.",
+              helpful: 0           // starting helpful votes count
+            } 
     ],
-    image: "https://image.qwenlm.ai/public_source/8eddacd5-9e2c-4465-9105-190904a28c78/1abcd9c27-8bd9-4590-95bd-7a707395e350.png"
-  },
-  {
-    id: "p05",
-    owner: "gf",
-    name: "NEO-7 CRYSTAL NECKLACE",
-    price: 311500,
-    rating: 4,
-    description: "Glowing violet crystal pendant on gunmetal chain. Handcrafted.",
-    url: "",
-    reviews: [
-      {
-        author: "VioletDream",
-        stars: 4,
-        text: "Absolutely beautiful. The glow is subtle and elegant, not overpowering. Great craftsmanship.",
-        helpful: 11
-      },
-      {
-        author: "NeonRose",
-        stars: 5,
-        text: "Perfect gift. Arrived well packaged and looked even better in person than in the photo.",
-        helpful: 9
-      }
-    ],
-    image: "https://image.qwenlm.ai/public_source/8eddacd5-9e2c-4465-9105-190904a28c78/128102b61-7dce-4c27-a900-15c12917b6c0.png"
-  },
-  {
-    id: "p06",
-    owner: "gf",
-    name: "CYBER-7 SHADES",
-    price: 416500,
-    rating: 4,
-    description: "LED-frame sunglasses with 8 glow patterns. UV400 lenses.",
-    url: "",
-    reviews: [
-      {
-        author: "LensHunter",
-        stars: 4,
-        text: "UV400 lenses are legit and the 8 patterns are all genuinely different. Battery life could be better.",
-        helpful: 16
-      }
-    ],
-    image: "https://image.qwenlm.ai/public_source/8eddacd5-9e2c-4465-9105-190904a28c78/11b52979c-1d53-43d3-b575-01ac13d71e4c.png"
+    images: [
+      "assets/images/products/eimy/MinisoPeluciaBt21Chimmy_0.png",
+      "assets/images/products/eimy/MinisoPeluciaBt21Chimmy_1.png.png"
+    ]
   }
 ];

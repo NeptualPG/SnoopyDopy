@@ -1,32 +1,27 @@
 <div align="center">
 
-# ⚡ SnoopStyle
+# ⚡ SnoopyDopy
 
-### Product Reviews
+### Neon Product Reviews — by Neptual & Eimy
 
-**A dual-seller neon storefront built with pure HTML, CSS & JavaScript.**  
+**A personal dual-reviewer neon site built with pure HTML, CSS & JavaScript.**  
 No frameworks. No dependencies. Just vibes and voltage.
 
 [![MIT License](https://img.shields.io/badge/license-MIT-orange?style=flat-square)](LICENSE)
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
 [![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
 [![JavaScript](https://img.shields.io/badge/JavaScript-ES6-F7DF1E?style=flat-square&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![GitHub Pages](https://img.shields.io/badge/hosted-GitHub%20Pages-181717?style=flat-square&logo=github)](https://neptualPG.github.io/SnoopyDopy/)
+
+**🌐 Live site → [neptualPG.github.io/SnoopyDopy](https://neptualPG.github.io/SnoopyDopy/)**
 
 </div>
 
 ---
 
-## Preview
+## What is this?
 
-> Add your screenshots to `screenshots/` and they'll appear here automatically.
-
-| Orange Theme (My Products) | Violet Theme (Her Products) |
-|:--------------------------:|:---------------------------:|
-| ![Home Orange](screenshots/home-orange.png) | ![Home Violet](screenshots/home-violet.png) |
-
-| Mobile View |
-|:-----------:|
-| ![Mobile](screenshots/mobile.png) |
+SnoopyDopy is a personal neon-themed product review site for two people — **Neptual** (orange) and **Eimy** (violet). Each person has their own tab, their own theme color, and their own product cards with star ratings, reviews, prices in COP/USD, and photo galleries.
 
 ---
 
@@ -35,170 +30,136 @@ No frameworks. No dependencies. Just vibes and voltage.
 | Feature | Status |
 |---------|--------|
 | Responsive Design | ✅ |
-| Orange Neon Theme | ✅ |
-| Violet Neon Theme | ✅ |
-| Product Toggle | ✅ |
-| Cyberpunk Design | ✅ |
-| Easy Product Management | ✅ |
+| Orange Neon Theme (Neptual) | ✅ |
+| Violet Neon Theme (Eimy) | ✅ |
+| Reviewer Toggle | ✅ |
+| Star Ratings | ✅ |
+| Product Reviews | ✅ |
+| Helpful Vote Button | ✅ |
+| COP / USD Price Toggle | ✅ |
+| Multi-image Gallery | ✅ |
+| View Product Button | ✅ |
+| Animated Snoopy Decoration | ✅ |
 | Pure HTML / CSS / JavaScript | ✅ |
 | No Framework | ✅ |
 | ES6 Modules | ✅ |
 | Semantic HTML + ARIA | ✅ |
-| CSS Variables | ✅ |
-| Animated Background | ✅ |
-| Neon Glow Effects | ✅ |
-| Staggered Card Animations | ✅ |
 
 ---
 
 ## Folder Structure
 
 ```
-SnoopStyle/
+SnoopyDopy/
 │
 ├── assets/
 │   ├── images/
-│   │   ├── hero/           # Hero section background images
-│   │   ├── products/       # Local product images
-│   │   ├── logo/           # Logo variants
-│   │   └── placeholders/   # Fallback / placeholder images
-│   ├── icons/              # SVG icons
-│   └── fonts/              # Self-hosted fonts (optional)
+│   │   ├── hero/              # Hero section background images
+│   │   ├── products/
+│   │   │   ├── neptual/       # Neptual's product images
+│   │   │   └── eimy/          # Eimy's product images
+│   │   ├── logo/              # Logo variants
+│   │   └── placeholders/      # Decorative images (e.g. Snoopy.png)
+│   ├── icons/                 # SVG icons
+│   └── fonts/                 # Self-hosted fonts (optional)
 │
 ├── css/
-│   ├── reset.css           # Browser default normalization
-│   ├── variables.css       # All design tokens (colors, spacing, fonts)
-│   ├── animations.css      # Keyframes and motion utilities
-│   ├── components.css      # All UI components (header, hero, cards, footer)
-│   ├── responsive.css      # Media queries and breakpoints
-│   └── styles.css          # Entry point — imports all modules above
+│   ├── reset.css              # Browser default normalization
+│   ├── variables.css          # All design tokens (colors, spacing, fonts)
+│   ├── animations.css         # Keyframes and motion utilities
+│   ├── components.css         # All UI components
+│   ├── responsive.css         # Media queries and breakpoints
+│   └── styles.css             # Entry point — imports all modules
 │
 ├── js/
 │   ├── data/
-│   │   └── products.js     # Product catalogue — edit this to add/remove products
+│   │   └── products.js        # All products and reviews — edit here
 │   ├── components/
-│   │   ├── productCard.js  # Builds and renders product card elements
-│   │   ├── hero.js         # Hero content updates on theme switch
-│   │   └── toggle.js       # Theme toggle button logic
+│   │   ├── productCard.js     # Card builder (gallery, stars, review, button)
+│   │   ├── hero.js            # Hero content per theme
+│   │   └── toggle.js          # Theme toggle logic
 │   ├── utils/
-│   │   └── helpers.js      # Shared utility functions
-│   └── main.js             # App entry point — wires everything together
+│   │   └── helpers.js         # COP↔USD conversion + utilities
+│   └── main.js                # App entry point
+│
+├── my honey/
+│   └── GUIDE.md               # Step-by-step guide for Eimy 💜
 │
 ├── screenshots/
-│   ├── home-orange.png     # Desktop — orange theme
-│   ├── home-violet.png     # Desktop — violet theme
-│   └── mobile.png          # Mobile view
-│
 ├── .gitignore
 ├── CHANGELOG.md
 ├── CONTRIBUTING.md
 ├── LICENSE
 ├── README.md
-├── favicon.ico
+├── favicon.svg
 └── index.html
 ```
 
 ---
 
-## How to Run
+## How to Run Locally
 
-**Option 1 — Open directly**
+**Live Server (recommended)**
 
-```bash
-git clone git@github.com:NeptualPG/SnoopStyle.git
-cd SnoopStyle
-open index.html
-```
+Install the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) VS Code extension, right-click `index.html` → **Open with Live Server**.
 
-**Option 2 — Live Server (recommended)**
+> ES6 modules won't load over `file://` in some browsers — always use a local server.
 
-Install the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) VS Code extension, right-click `index.html`, and select **Open with Live Server**.
-
-> Live Server is recommended because ES6 modules (`type="module"`) require an HTTP server — they won't load over `file://` in some browsers.
-
-**Option 3 — Python**
-
+**Python fallback**
 ```bash
 python -m http.server 8080
-# then open http://localhost:8080
+# open http://localhost:8080
 ```
 
 ---
 
-## How to Add Products
+## How to Add a Product
 
-All products are stored in `js/data/products.js`. Open that file and add a new object to the `PRODUCTS` array.
+Open `js/data/products.js` and add to the `PRODUCTS` array:
 
 ```js
 {
-  id: "p07",           // Unique string ID
-  owner: "me",         // "me" = orange theme, "gf" = violet theme
-  name: "CYBER BACKPACK",
-  price: 199,          // Number (no currency symbol)
-  currency: "$",       // Currency symbol
-  description: "Anti-RFID compartments with LED edge lighting.",
-  image: "assets/images/products/cyber-backpack.webp",  // URL or local path
-  contact: "mailto:me@neonmarket.io"   // mailto:, tel:, or any URL
+  id: "p07",
+  owner: "me",           // "me" = Neptual (orange) | "gf" = Eimy (violet)
+  name: "PRODUCT NAME",
+  price: 150000,         // in COP — USD is calculated automatically
+  rating: 5,             // overall stars shown on the badge (1–5)
+  description: "Short description of the product.",
+  url: "https://link-to-product-page.com",  // optional — shows VIEW PRODUCT button
+  reviews: [
+    {
+      author: "Neptual",
+      stars: 5,
+      text: "Your honest review goes here.",
+      helpful: 0
+    }
+  ],
+  // Single image:
+  image: "assets/images/products/neptual/photo.png",
+  // OR multiple images (gallery):
+  images: [
+    "assets/images/products/neptual/photo1.png",
+    "assets/images/products/neptual/photo2.png"
+  ]
 }
 ```
 
-Save the file and refresh — the card appears automatically.
-
 ---
 
-## Customization
+## Deployment — GitHub Pages
 
-### Change theme colors
+This site is hosted for free on GitHub Pages.
 
-Open `css/variables.css` and edit the neon color tokens:
-
-```css
-/* Orange theme */
---neon:   #ff6b1a;
---neon-2: #ff8c42;
-
-/* Violet theme */
---neon-v:   #b026ff;
---neon-v-2: #d946ef;
+```bash
+git add .
+git commit -m "feat: update products"
+git push
 ```
 
-### Replace the hero image
+Every push to `main` redeploys automatically.
 
-Update the `heroImage` value in `js/components/hero.js` per theme, or replace the inline `style` on `.hero-image` in `index.html`.
-
-### Change seller names / labels
-
-Edit the `HERO_COPY` object in `js/components/hero.js`:
-
-```js
-export const HERO_COPY = {
-  me: {
-    title:   "FUTURE TECH. REAL PRICE.",
-    metaTag: "SELLER: ME",
-    // ...
-  },
-  gf: {
-    title:   "NEON FASHION. HER STYLE.",
-    metaTag: "SELLER: HER",
-    // ...
-  }
-};
-```
-
-### Replace the Contact button behavior
-
-Change the `contact` field in each product in `products.js` to any URL — a WhatsApp link, Instagram page, Linktree, or a backend endpoint.
-
-### Connect to a backend later
-
-Replace the `PRODUCTS` array import in `main.js` with a `fetch()` call:
-
-```js
-const response = await fetch("/api/products");
-const PRODUCTS = await response.json();
-```
-
-The rest of the rendering pipeline stays exactly the same.
+To enable Pages on a new repo:  
+**Settings → Pages → Source: Deploy from branch → main / (root) → Save**
 
 ---
 
@@ -211,29 +172,7 @@ The rest of the rendering pipeline stays exactly the same.
 | JavaScript ES6 | ES modules, DOM manipulation |
 | Orbitron (font) | Display / headings |
 | Rajdhani (font) | Body text |
-
----
-
-## Roadmap
-
-| Feature | Status |
-|---------|--------|
-| Product Search | 🔲 Planned |
-| Category Filters | 🔲 Planned |
-| Shopping Cart | 🔲 Planned |
-| Firebase Integration | 🔲 Planned |
-| Admin Dashboard | 🔲 Planned |
-| User Login | 🔲 Planned |
-| Product Gallery (multi-image) | 🔲 Planned |
-| Dark / Light Theme Toggle | 🔲 Planned |
-| Product Scroll Animations | 🔲 Planned |
-| Wishlist | 🔲 Planned |
-
----
-
-## Contributing
-
-Pull requests are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+| GitHub Pages | Free static hosting |
 
 ---
 
@@ -244,5 +183,5 @@ Pull requests are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines
 ---
 
 <div align="center">
-  <sub>Built in the neon grid. ⚡</sub>
+  <sub>Made with 🧡💜 by Neptual & Eimy — built in the neon grid. ⚡</sub>
 </div>

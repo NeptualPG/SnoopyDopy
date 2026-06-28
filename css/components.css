@@ -844,6 +844,111 @@ body[data-currency="usd"] .price-usd { display: contents; }
   outline-offset: 2px;
 }
 
+/* ── Lightbox ──────────────────────────────────────────────── */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  background: rgba(4, 4, 10, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;          /* invisible AND unclickable when closed */
+  transition: opacity 0.25s ease;
+}
+
+.lightbox--open {
+  opacity: 1;
+  pointer-events: auto;          /* restore clicks only when open */
+}
+
+.lightbox-img {
+  width: min(90vw, 860px);
+  height: min(82vh, 700px);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--accent-glow-strong);
+  transition: background-image 0.15s ease;
+}
+
+/* ── Close button ──────────────────────────────────────────── */
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  width: 40px;
+  height: 40px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  color: var(--text);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.lightbox-close:hover,
+.lightbox-close:focus-visible {
+  border-color: var(--accent);
+  box-shadow: var(--accent-glow);
+  outline: none;
+}
+
+/* ── Prev / Next arrows ────────────────────────────────────── */
+
+.lightbox-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 64px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--accent);
+  font-size: 32px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.lightbox-prev { left:  24px; }
+.lightbox-next { right: 24px; }
+
+.lightbox-arrow:hover,
+.lightbox-arrow:focus-visible {
+  background: var(--accent-soft);
+  box-shadow: var(--accent-glow);
+  outline: none;
+}
+
+/* ── Counter ───────────────────────────────────────────────── */
+
+.lightbox-counter {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-display);
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: var(--muted);
+}
+
 /* ── Footer ────────────────────────────────────────────────── */
 
 .site-footer {
