@@ -1,0 +1,81 @@
+/* =============================================================
+   animations.css — SnoopyDopy Cyberpunk Marketplace
+   All keyframe animations and motion utilities.
+============================================================= */
+
+/* ── Hero image slow zoom ──────────────────────────────────── */
+@keyframes heroZoom {
+  from { transform: scale(1.05); }
+  to   { transform: scale(1.15); }
+}
+
+/* ── Card fade-in on render ────────────────────────────────── */
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Neon flicker (optional — apply via class) ─────────────── */
+@keyframes neonFlicker {
+  0%, 100% { opacity: 1; }
+  92%       { opacity: 1; }
+  93%       { opacity: 0.4; }
+  94%       { opacity: 1; }
+  96%       { opacity: 0.6; }
+  97%       { opacity: 1; }
+}
+
+/* ── Scanline sweep ────────────────────────────────────────── */
+@keyframes scanSweep {
+  from { background-position: 0 0; }
+  to   { background-position: 0 100%; }
+}
+
+/* ── Pulse glow (for active badges, dots) ──────────────────── */
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 4px var(--accent); }
+  50%       { box-shadow: 0 0 16px var(--accent), 0 0 32px var(--accent); }
+}
+
+/* ── Slide in from left ────────────────────────────────────── */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ── Utility classes ───────────────────────────────────────── */
+
+.animate-card {
+  animation: cardFadeIn 0.45s ease both;
+}
+
+.animate-flicker {
+  animation: neonFlicker 5s infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2.5s ease-in-out infinite;
+}
+
+/* ── Respect prefers-reduced-motion ────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

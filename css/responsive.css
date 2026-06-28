@@ -1,0 +1,137 @@
+/* =============================================================
+   responsive.css — SnoopyDopy Cyberpunk Marketplace
+   Breakpoints and mobile-first adjustments.
+   Breakpoints: mobile (<480px), tablet (<720px), desktop (720px+)
+============================================================= */
+
+/* ── Tablet & below (≤ 720px) ──────────────────────────────── */
+@media (max-width: 720px) {
+  .site-header {
+    padding: 14px 18px;
+  }
+
+  /* Hide tagline to save header space */
+  .tagline {
+    display: none;
+  }
+
+  .toggle-section {
+    padding: 20px 18px 4px;
+  }
+
+  .toggle-btn {
+    padding: 10px 14px;
+    font-size: 10px;
+  }
+
+  .toggle-btn .toggle-label {
+    letter-spacing: 1px;
+  }
+
+  .hero {
+    margin: 16px 18px;
+    height: 300px;
+  }
+
+  .hero-overlay {
+    padding: 28px;
+  }
+
+  .products-section {
+    padding: 20px 18px 40px;
+  }
+
+  .section-title {
+    font-size: 20px;
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .site-footer {
+    padding: 22px 18px;
+  }
+}
+
+/* ── Small mobile (≤ 480px) ────────────────────────────────── */
+@media (max-width: 480px) {
+  .logo {
+    font-size: 18px;
+    letter-spacing: 2px;
+  }
+
+  .hero {
+    height: 260px;
+  }
+
+  .hero-title {
+    font-size: clamp(22px, 7vw, 36px);
+    letter-spacing: 2px;
+  }
+
+  .hero-sub {
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+
+  .hero-meta {
+    gap: 8px;
+  }
+
+  .meta-tag {
+    font-size: 10px;
+    padding: 6px 10px;
+  }
+
+  .toggle-btn .toggle-label {
+    display: none;
+  }
+
+  .toggle-btn {
+    padding: 10px 12px;
+  }
+
+  .card-name {
+    font-size: 16px;
+  }
+
+  .card-price {
+    font-size: 18px;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* ── Large desktop (≥ 1280px) ──────────────────────────────── */
+@media (min-width: 1280px) {
+  .products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+
+  .hero {
+    height: 440px;
+  }
+}
+
+/* ── Ultra-wide (≥ 1600px) ─────────────────────────────────── */
+@media (min-width: 1600px) {
+  .site-header,
+  .toggle-section,
+  .hero,
+  .products-section,
+  .site-footer {
+    max-width: 1540px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

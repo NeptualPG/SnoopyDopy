@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" fill="#07070d"/>
+  <!-- Corner accents (cyberpunk card motif) -->
+  <polyline points="2,8 2,2 8,2"   fill="none" stroke="#ff6b1a" stroke-width="2"/>
+  <polyline points="24,2 30,2 30,8" fill="none" stroke="#ff6b1a" stroke-width="2"/>
+  <polyline points="2,24 2,30 8,30" fill="none" stroke="#ff6b1a" stroke-width="2"/>
+  <polyline points="30,24 30,30 24,30" fill="none" stroke="#ff6b1a" stroke-width="2"/>
+  <!-- Lightning bolt -->
+  <polygon points="18,4 11,17 16,17 14,28 21,15 16,15" fill="#ff6b1a"/>
+</svg>

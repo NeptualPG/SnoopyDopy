@@ -1,0 +1,485 @@
+/* =============================================================
+   components.css — SnoopyDopy Cyberpunk Marketplace
+   Reusable UI components: header, toggle, hero, cards, footer.
+============================================================= */
+
+/* ── Base ──────────────────────────────────────────────────── */
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  min-height: 100vh;
+  transition: background var(--transition-slow);
+}
+
+/* ── Animated Background ───────────────────────────────────── */
+
+.bg-grid {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-bg);
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+}
+
+.bg-scan {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-scan);
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.02) 0px,
+    rgba(255, 255, 255, 0.02) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  opacity: 0.6;
+}
+
+/* Ambient glow that follows the active theme */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-scan);
+  background:
+    radial-gradient(1000px 600px at 10% -10%, var(--accent-soft), transparent 60%),
+    radial-gradient(800px 500px at 110% 110%, var(--accent-soft), transparent 60%);
+  transition: background var(--transition-theme);
+  pointer-events: none;
+}
+
+/* ── Header ────────────────────────────────────────────────── */
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px var(--space-xl);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  background: rgba(7, 7, 13, 0.7);
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  color: var(--accent);
+  text-shadow: var(--accent-glow);
+  transition: color var(--transition-slow), text-shadow var(--transition-slow);
+}
+
+.logo-bracket {
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.tagline {
+  font-family: var(--font-body);
+  font-size: 13px;
+  letter-spacing: 4px;
+  color: var(--muted);
+}
+
+/* ── Theme Toggle ──────────────────────────────────────────── */
+
+.toggle-section {
+  padding: 28px var(--space-xl) 8px;
+}
+
+.toggle-wrap {
+  display: inline-flex;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 6px;
+  gap: 6px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.toggle-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 22px;
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: 12px;
+  letter-spacing: 2px;
+  transition: all var(--transition-base);
+}
+
+.toggle-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.toggle-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--muted);
+  transition: all var(--transition-base);
+  flex-shrink: 0;
+}
+
+.toggle-btn:hover {
+  color: var(--text);
+}
+
+.toggle-btn.active {
+  color: #fff;
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  box-shadow: var(--accent-glow);
+}
+
+.toggle-btn.active .toggle-dot {
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent);
+}
+
+/* ── Hero ──────────────────────────────────────────────────── */
+
+.hero {
+  position: relative;
+  margin: var(--space-lg) var(--space-xl);
+  height: 380px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.hero-image {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: saturate(1.1) contrast(1.05);
+  transform: scale(1.05);
+  animation: heroZoom 18s ease-in-out infinite alternate;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(7, 7, 13, 0.85) 0%,
+    rgba(7, 7, 13, 0.4) 60%,
+    rgba(7, 7, 13, 0.75) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--space-2xl);
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 5vw, 54px);
+  font-weight: 900;
+  letter-spacing: 4px;
+  line-height: 1.05;
+  color: #fff;
+  text-shadow: var(--accent-glow-strong);
+  transition: text-shadow var(--transition-slow);
+}
+
+.hero-sub {
+  margin-top: 18px;
+  font-size: 16px;
+  letter-spacing: 2px;
+  color: var(--muted);
+  max-width: 520px;
+}
+
+.hero-meta {
+  margin-top: 28px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.meta-tag {
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 3px;
+  padding: 8px 14px;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--accent-glow);
+  transition: all var(--transition-slow);
+}
+
+/* ── Products Section ──────────────────────────────────────── */
+
+.products-section {
+  padding: 20px var(--space-xl) 60px;
+}
+
+.section-head {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: var(--space-xl);
+  flex-wrap: wrap;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: 26px;
+  letter-spacing: 4px;
+  color: #fff;
+  text-shadow: var(--accent-glow);
+  transition: text-shadow var(--transition-slow);
+}
+
+.section-line {
+  flex: 1;
+  min-width: 40px;
+  height: 1px;
+  background: linear-gradient(to right, var(--accent), transparent);
+  box-shadow: var(--accent-glow);
+  transition: background var(--transition-slow), box-shadow var(--transition-slow);
+}
+
+.section-count {
+  font-family: var(--font-display);
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: var(--muted);
+}
+
+/* ── Product Grid ──────────────────────────────────────────── */
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-lg);
+}
+
+/* ── Product Card ──────────────────────────────────────────── */
+
+.card {
+  position: relative;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition:
+    transform var(--transition-base),
+    border-color var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+/* Corner accents */
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  border-top: 2px solid var(--accent);
+  border-left: 2px solid var(--accent);
+  opacity: 0.8;
+  transition: border-color var(--transition-slow);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 24px;
+  height: 24px;
+  border-bottom: 2px solid var(--accent);
+  border-right: 2px solid var(--accent);
+  opacity: 0.8;
+  transition: border-color var(--transition-slow);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent);
+  box-shadow: var(--accent-glow-strong);
+}
+
+.card-img {
+  width: 100%;
+  height: 240px;
+  background-color: #111;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gradient fade at bottom of image */
+.card-img::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 50%, rgba(7, 7, 13, 0.9) 100%);
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-seller {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: var(--space-xs) 10px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 12px;
+  background: var(--accent-soft);
+  transition: all var(--transition-slow);
+}
+
+.card-name {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #fff;
+  margin-bottom: var(--space-sm);
+}
+
+.card-desc {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--muted);
+  margin-bottom: var(--space-md);
+  min-height: 42px;
+}
+
+.card-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.card-price {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--accent);
+  text-shadow: var(--accent-glow);
+  transition: all var(--transition-slow);
+}
+
+.card-price .currency {
+  font-size: 14px;
+  margin-right: 2px;
+  opacity: 0.8;
+}
+
+/* ── Buy / Contact Button ──────────────────────────────────── */
+
+.buy-btn {
+  position: relative;
+  padding: 10px 18px;
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  transition: all var(--transition-base);
+  display: inline-block;
+  text-align: center;
+}
+
+.buy-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  transform: translateX(-101%);
+  transition: transform var(--transition-base);
+  z-index: -1;
+}
+
+.buy-btn:hover,
+.buy-btn:focus-visible {
+  color: #000;
+  box-shadow: var(--accent-glow);
+  outline: none;
+}
+
+.buy-btn:hover::before,
+.buy-btn:focus-visible::before {
+  transform: translateX(0);
+}
+
+/* ── Footer ────────────────────────────────────────────────── */
+
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 28px var(--space-xl);
+  background: rgba(7, 7, 13, 0.6);
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.footer-brand {
+  font-family: var(--font-display);
+  font-size: 13px;
+  letter-spacing: 3px;
+  color: var(--accent);
+  text-shadow: var(--accent-glow);
+  transition: all var(--transition-slow);
+}
+
+.footer-copy {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: var(--muted);
+}

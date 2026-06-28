@@ -1,0 +1,17 @@
+/* =============================================================
+   styles.css — SnoopyDopy Cyberpunk Marketplace
+   Main entry point. Imports all CSS modules in order.
+   
+   Load order matters:
+   1. reset      — clears browser defaults
+   2. variables  — design tokens (colors, spacing, fonts)
+   3. animations — keyframes and motion utilities
+   4. components — all UI components
+   5. responsive — media queries and breakpoints
+============================================================= */
+
+@import url("reset.css");
+@import url("variables.css");
+@import url("animations.css");
+@import url("components.css");
+@import url("responsive.css");

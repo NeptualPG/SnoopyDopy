@@ -1,0 +1,83 @@
+/* =============================================================
+   variables.css — SnoopyDopy Cyberpunk Marketplace
+   All design tokens: colors, typography, spacing, shadows.
+   Edit these to retheme the entire site instantly.
+============================================================= */
+
+:root {
+  /* ── Background Layers ─────────────────────────────────── */
+  --bg:        #07070d;
+  --bg-2:      #0d0d18;
+  --panel:     rgba(15, 15, 25, 0.75);
+
+  /* ── Typography ────────────────────────────────────────── */
+  --text:      #e6e6f0;
+  --muted:     #8a8aa3;
+  --font-display: 'Orbitron', system-ui, sans-serif;
+  --font-body:    'Rajdhani', system-ui, sans-serif;
+
+  /* ── Borders & Layout ──────────────────────────────────── */
+  --border:    rgba(255, 255, 255, 0.08);
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+
+  /* ── Spacing Scale ─────────────────────────────────────── */
+  --space-xs:  4px;
+  --space-sm:  8px;
+  --space-md:  16px;
+  --space-lg:  24px;
+  --space-xl:  32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+
+  /* ── Z-index Scale ─────────────────────────────────────── */
+  --z-bg:      -2;
+  --z-scan:    -1;
+  --z-base:    0;
+  --z-overlay: 10;
+  --z-sticky:  50;
+  --z-modal:   100;
+
+  /* ── Transitions ───────────────────────────────────────── */
+  --transition-fast:   0.2s ease;
+  --transition-base:   0.3s ease;
+  --transition-slow:   0.4s ease;
+  --transition-theme:  0.6s ease;
+
+  /* ── Orange Theme (owner: "me") ────────────────────────── */
+  --neon:             #ff6b1a;
+  --neon-2:           #ff8c42;
+  --neon-soft:        rgba(255, 107, 26, 0.25);
+  --neon-glow:        0 0 12px rgba(255, 107, 26, 0.7),
+                      0 0 28px rgba(255, 107, 26, 0.4);
+  --neon-glow-strong: 0 0 18px rgba(255, 107, 26, 0.9),
+                      0 0 48px rgba(255, 107, 26, 0.6);
+
+  /* ── Violet Theme (owner: "gf") ────────────────────────── */
+  --neon-v:             #b026ff;
+  --neon-v-2:           #d946ef;
+  --neon-v-soft:        rgba(176, 38, 255, 0.25);
+  --neon-v-glow:        0 0 12px rgba(176, 38, 255, 0.7),
+                        0 0 28px rgba(176, 38, 255, 0.4);
+  --neon-v-glow-strong: 0 0 18px rgba(176, 38, 255, 0.9),
+                        0 0 48px rgba(176, 38, 255, 0.6);
+}
+
+/* ── Active Theme Aliases (set by data-theme on <body>) ──── */
+
+body[data-theme="me"] {
+  --accent:            var(--neon);
+  --accent-2:          var(--neon-2);
+  --accent-soft:       var(--neon-soft);
+  --accent-glow:       var(--neon-glow);
+  --accent-glow-strong: var(--neon-glow-strong);
+}
+
+body[data-theme="gf"] {
+  --accent:            var(--neon-v);
+  --accent-2:          var(--neon-v-2);
+  --accent-soft:       var(--neon-v-soft);
+  --accent-glow:       var(--neon-v-glow);
+  --accent-glow-strong: var(--neon-v-glow-strong);
+}

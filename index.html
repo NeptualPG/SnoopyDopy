@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ── SEO Meta ──────────────────────────────────────── -->
+    <title>SnoopyDopy — Cyberpunk Marketplace</title>
+    <meta name="description" content="SnoopyDopy: a cyberpunk-themed neon marketplace. Shop futuristic LED fashion and accessories from two independent sellers." />
+    <meta name="author" content="NeptualPG" />
+    <meta name="keywords" content="cyberpunk, neon, marketplace, LED fashion, cyber accessories" />
+
+    <!-- ── Open Graph ────────────────────────────────────── -->
+    <meta property="og:title"       content="SnoopyDopy — Cyberpunk Marketplace" />
+    <meta property="og:description" content="Curated gear from the neon underground." />
+    <meta property="og:type"        content="website" />
+    <meta property="og:image"       content="assets/images/hero/hero-default.png" />
+
+    <!-- ── Favicon ───────────────────────────────────────── -->
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+    <!-- ── Fonts (display + body) ────────────────────────── -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fontsource/orbitron@5.0.18/index.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fontsource/rajdhani@5.0.21/index.css"
+    />
+
+    <!-- ── Styles ─────────────────────────────────────────── -->
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+
+  <body data-theme="me">
+
+    <!-- ── Decorative background layers (aria-hidden) ──────── -->
+    <div class="bg-grid"  aria-hidden="true"></div>
+    <div class="bg-scan"  aria-hidden="true"></div>
+
+    <!-- ── Header ──────────────────────────────────────────── -->
+    <header class="site-header" role="banner">
+      <a href="/" class="logo" aria-label="SnoopyDopy home">
+        <span class="logo-bracket" aria-hidden="true">&lt;</span>
+        <span class="logo-text">SNOOPYDOPY</span>
+        <span class="logo-bracket" aria-hidden="true">/&gt;</span>
+      </a>
+      <nav aria-label="Site tagline">
+        <span class="tagline">CYBER MARKET // 2026</span>
+      </nav>
+    </header>
+
+    <!-- ── Theme Toggle ────────────────────────────────────── -->
+    <section class="toggle-section" aria-label="Seller theme switch">
+      <div class="toggle-wrap" role="group" aria-label="Select seller">
+        <button
+          class="toggle-btn active"
+          data-target="me"
+          aria-pressed="true"
+          type="button"
+        >
+          <span class="toggle-dot" aria-hidden="true"></span>
+          <span class="toggle-label">// MY PRODUCTS</span>
+        </button>
+        <button
+          class="toggle-btn"
+          data-target="gf"
+          aria-pressed="false"
+          type="button"
+        >
+          <span class="toggle-dot" aria-hidden="true"></span>
+          <span class="toggle-label">// HER PRODUCTS</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ── Hero ────────────────────────────────────────────── -->
+    <section class="hero" aria-label="Featured seller banner">
+      <div
+        class="hero-image"
+        role="img"
+        aria-label="Cyberpunk marketplace banner image"
+        style="background-image: url('https://image.qwenlm.ai/public_source/8eddacd5-9e2c-4465-9105-190904a28c78/175c442ce-30ad-4b06-8691-bf6431ed9352.png')"
+      ></div>
+      <div class="hero-overlay">
+        <h1 class="hero-title" id="heroTitle">FUTURE TECH. REAL PRICE.</h1>
+        <p  class="hero-sub"   id="heroSub">Curated gear from the neon underground.</p>
+        <div class="hero-meta" aria-label="Seller info">
+          <span class="meta-tag" id="metaTag">SELLER: ME</span>
+          <span class="meta-tag" aria-label="Year">// 2026</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Products ────────────────────────────────────────── -->
+    <main class="products-section" id="products" aria-label="Product listings">
+      <div class="section-head">
+        <h2 class="section-title" id="sectionTitle">MY PRODUCTS</h2>
+        <div class="section-line" aria-hidden="true"></div>
+        <span class="section-count" id="sectionCount" aria-live="polite" aria-atomic="true">
+          3 items
+        </span>
+      </div>
+
+      <!-- Cards injected here by main.js -->
+      <div
+        class="products-grid"
+        id="productsGrid"
+        role="list"
+        aria-label="Product cards"
+      ></div>
+    </main>
+
+    <!-- ── Footer ──────────────────────────────────────────── -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="footer-inner">
+        <div class="footer-brand">SNOOPYDOPY</div>
+        <div class="footer-copy">© 2026 — Built in the neon grid.</div>
+      </div>
+    </footer>
+
+    <!-- ── Scripts (ES modules) ────────────────────────────── -->
+    <script type="module" src="js/main.js"></script>
+
+  </body>
+</html>
