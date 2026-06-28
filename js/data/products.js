@@ -27,8 +27,8 @@ export const PRODUCTS = [
     id: "p01",
     owner: "me",
     name: "INFINI OUD — MAISON ALHAMBRA",
-    price: 0,
-    rating: 0,
+    price: 228423,
+    rating: 5,
     description: "Unisex. A rich and smoky oud fragrance with deep woody undertones and a warm, lingering finish.",
     reviews: [
         {
