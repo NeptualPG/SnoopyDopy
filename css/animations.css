@@ -1,5 +1,5 @@
 /* =============================================================
-   animations.css — SnoopyDopy Cyberpunk Marketplace
+   animations.css — SnoopyDopy Product Reviews
    All keyframe animations and motion utilities.
 ============================================================= */
 
@@ -41,6 +41,12 @@
 @keyframes pulseGlow {
   0%, 100% { box-shadow: 0 0 4px var(--accent); }
   50%       { box-shadow: 0 0 16px var(--accent), 0 0 32px var(--accent); }
+}
+
+/* ── Snoopy idle float ─────────────────────────────────────── */
+@keyframes snoopyFloat {
+  0%, 100% { transform: translateY(0px);   }
+  50%       { transform: translateY(-10px); }
 }
 
 /* ── Slide in from left ────────────────────────────────────── */

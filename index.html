@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- ── SEO Meta ──────────────────────────────────────── -->
-    <title>SnoopyDopy — Cyberpunk Marketplace</title>
-    <meta name="description" content="SnoopyDopy: a cyberpunk-themed neon marketplace. Shop futuristic LED fashion and accessories from two independent sellers." />
+    <title>SnoopyDopy — Product Reviews</title>
+    <meta name="description" content="SnoopyDopy: neon-themed product reviews by Neptual and Eimy." />
     <meta name="author" content="NeptualPG" />
-    <meta name="keywords" content="cyberpunk, neon, marketplace, LED fashion, cyber accessories" />
+    <meta name="keywords" content="snoopy, neon, marketplace, LED fashion, cyber accessories" />
 
     <!-- ── Open Graph ────────────────────────────────────── -->
-    <meta property="og:title"       content="SnoopyDopy — Cyberpunk Marketplace" />
+    <meta property="og:title"       content="SnoopyDopy — Product Reviews" />
     <meta property="og:description" content="Curated gear from the neon underground." />
     <meta property="og:type"        content="website" />
     <meta property="og:image"       content="assets/images/hero/hero-default.png" />
@@ -34,7 +34,7 @@
     <link rel="stylesheet" href="css/styles.css" />
   </head>
 
-  <body data-theme="me">
+  <body data-theme="me" data-currency="cop">
 
     <!-- ── Decorative background layers (aria-hidden) ──────── -->
     <div class="bg-grid"  aria-hidden="true"></div>
@@ -48,7 +48,7 @@
         <span class="logo-bracket" aria-hidden="true">/&gt;</span>
       </a>
       <nav aria-label="Site tagline">
-        <span class="tagline">CYBER MARKET // 2026</span>
+        <span class="tagline">PRODUCT REVIEWS // 2026</span>
       </nav>
     </header>
 
@@ -62,7 +62,7 @@
           type="button"
         >
           <span class="toggle-dot" aria-hidden="true"></span>
-          <span class="toggle-label">// MY PRODUCTS</span>
+          <span class="toggle-label">// NEPTUAL'S REVIEWS</span>
         </button>
         <button
           class="toggle-btn"
@@ -71,7 +71,7 @@
           type="button"
         >
           <span class="toggle-dot" aria-hidden="true"></span>
-          <span class="toggle-label">// HER PRODUCTS</span>
+          <span class="toggle-label">// EIMY'S REVIEWS</span>
         </button>
       </div>
     </section>
@@ -81,27 +81,47 @@
       <div
         class="hero-image"
         role="img"
-        aria-label="Cyberpunk marketplace banner image"
+        aria-label="Snoopy marketplace banner image"
         style="background-image: url('https://image.qwenlm.ai/public_source/8eddacd5-9e2c-4465-9105-190904a28c78/175c442ce-30ad-4b06-8691-bf6431ed9352.png')"
       ></div>
       <div class="hero-overlay">
-        <h1 class="hero-title" id="heroTitle">FUTURE TECH. REAL PRICE.</h1>
-        <p  class="hero-sub"   id="heroSub">Curated gear from the neon underground.</p>
+        <h1 class="hero-title" id="heroTitle">REAL REVIEWS. REAL GEAR.</h1>
+        <p  class="hero-sub"   id="heroSub">Honest takes from the neon underground.</p>
         <div class="hero-meta" aria-label="Seller info">
-          <span class="meta-tag" id="metaTag">SELLER: ME</span>
+          <span class="meta-tag" id="metaTag">REVIEWER: NEPTUAL</span>
           <span class="meta-tag" aria-label="Year">// 2026</span>
         </div>
       </div>
+
+      <!-- ── Decorative Snoopy ──────────────────────────────── -->
+      <img
+        src="assets/images/placeholders/Snoopy.png"
+        class="hero-snoopy"
+        alt=""
+        aria-hidden="true"
+        draggable="false"
+      />
     </section>
 
     <!-- ── Products ────────────────────────────────────────── -->
-    <main class="products-section" id="products" aria-label="Product listings">
+    <main class="products-section" id="products" aria-label="Product reviews">
       <div class="section-head">
-        <h2 class="section-title" id="sectionTitle">MY PRODUCTS</h2>
+        <h2 class="section-title" id="sectionTitle">NEPTUAL'S REVIEWS</h2>
         <div class="section-line" aria-hidden="true"></div>
         <span class="section-count" id="sectionCount" aria-live="polite" aria-atomic="true">
           3 items
         </span>
+        <button
+          class="currency-toggle-btn"
+          id="currencyToggle"
+          type="button"
+          aria-label="Switch currency display"
+          title="Switch between COP and USD"
+        >
+          <span class="currency-toggle-active">COP</span>
+          <span class="currency-toggle-sep">|</span>
+          <span class="currency-toggle-inactive">USD</span>
+        </button>
       </div>
 
       <!-- Cards injected here by main.js -->
@@ -117,7 +137,7 @@
     <footer class="site-footer" role="contentinfo">
       <div class="footer-inner">
         <div class="footer-brand">SNOOPYDOPY</div>
-        <div class="footer-copy">© 2026 — Built in the neon grid.</div>
+        <div class="footer-copy">© 2026 — Built BY Neptual_GP.</div>
       </div>
     </footer>
 

@@ -1,11 +1,11 @@
-# Contributing to SnoopyDopy
+# Contributing to SnoopStyle
 
 Thanks for your interest in contributing! Here's how to get involved.
 
 ## Getting Started
 
 1. Fork the repository
-2. Clone your fork: `git clone git@github.com:<your-username>/SnoopyDopy.git`
+2. Clone your fork: `git clone git@github.com:<your-username>/SnoopStyle.git`
 3. Open `index.html` with a local server (Live Server, Python's `http.server`, etc.)
 
 ## What Can I Contribute?

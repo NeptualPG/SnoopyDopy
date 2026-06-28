@@ -1,16 +1,37 @@
 /**
- * helpers.js — SnoopyDopy Cyberpunk Marketplace
+ * helpers.js — SnoopyDopy Product Reviews
  * Generic utility functions shared across components.
  */
 
+/** Approximate COP → USD exchange rate. Update this single constant to reprice everything. */
+export const COP_TO_USD_RATE = 3500;
+
 /**
- * Formats a price number into a display string.
- * @param {number} price     - Numeric price value.
- * @param {string} currency  - Currency symbol (default: "$").
- * @returns {string}         - Formatted string, e.g. "$129"
+ * Converts Colombian pesos to approximate USD.
+ * @param {number} cop  - Price in COP.
+ * @returns {number}    - Rounded USD value.
  */
-export function formatPrice(price, currency = "$") {
-  return `${currency}${price.toLocaleString()}`;
+export function copToUsd(cop) {
+  return Math.round(cop / COP_TO_USD_RATE);
+}
+
+/**
+ * Formats a COP price for display, e.g. 450000 → "$ 450.000"
+ * Uses Colombian locale formatting (periods as thousands separators).
+ * @param {number} cop
+ * @returns {string}
+ */
+export function formatCop(cop) {
+  return "$ " + cop.toLocaleString("es-CO");
+}
+
+/**
+ * Formats a USD price for display, e.g. 129 → "≈ USD 129"
+ * @param {number} usd
+ * @returns {string}
+ */
+export function formatUsd(usd) {
+  return "≈ USD " + usd.toLocaleString("en-US");
 }
 
 /**

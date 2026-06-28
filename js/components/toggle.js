@@ -1,5 +1,5 @@
 /**
- * toggle.js — SnoopyDopy Cyberpunk Marketplace
+ * toggle.js — SnoopyDopy Product Reviews
  * Manages the seller theme toggle buttons and body data-theme attribute.
  */
 

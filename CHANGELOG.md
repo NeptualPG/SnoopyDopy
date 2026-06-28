@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to SnoopyDopy will be documented here.
+All notable changes to SnoopStyle will be documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).

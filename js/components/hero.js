@@ -1,5 +1,5 @@
 /**
- * hero.js — SnoopyDopy Cyberpunk Marketplace
+ * hero.js — SnoopyDopy Product Reviews
  * Manages hero section content updates when the theme switches.
  */
 
@@ -9,17 +9,17 @@
  */
 export const HERO_COPY = {
   me: {
-    title:    "FUTURE TECH. REAL PRICE.",
-    subtitle: "Curated gear from the neon underground.",
-    section:  "MY PRODUCTS",
-    metaTag:  "SELLER: ME",
+    title:    "Chasing the moon.",
+    subtitle: "Honest takes from the neon underground.",
+    section:  "NEPTUAL'S REVIEWS",
+    metaTag:  "REVIEWER: NEPTUAL",
     heroImage: "https://image.qwenlm.ai/public_source/8eddacd5-9e2c-4465-9105-190904a28c78/175c442ce-30ad-4b06-8691-bf6431ed9352.png"
   },
   gf: {
-    title:    "NEON FASHION. HER STYLE.",
-    subtitle: "Handcrafted pieces glowing in violet light.",
-    section:  "HER PRODUCTS",
-    metaTag:  "SELLER: HER",
+    title:    "Reaching for the stars.",
+    subtitle: "Curated reviews glowing in violet light.",
+    section:  "EIMY'S REVIEWS",
+    metaTag:  "REVIEWER: EIMY",
     heroImage: "https://image.qwenlm.ai/public_source/8eddacd5-9e2c-4465-9105-190904a28c78/175c442ce-30ad-4b06-8691-bf6431ed9352.png"
   }
 };

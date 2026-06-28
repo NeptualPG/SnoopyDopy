@@ -1,8 +1,8 @@
 <div align="center">
 
-# ⚡ SnoopyDopy
+# ⚡ SnoopStyle
 
-### Cyberpunk Marketplace
+### Product Reviews
 
 **A dual-seller neon storefront built with pure HTML, CSS & JavaScript.**  
 No frameworks. No dependencies. Just vibes and voltage.
@@ -54,7 +54,7 @@ No frameworks. No dependencies. Just vibes and voltage.
 ## Folder Structure
 
 ```
-SnoopyDopy/
+SnoopStyle/
 │
 ├── assets/
 │   ├── images/
@@ -105,8 +105,8 @@ SnoopyDopy/
 **Option 1 — Open directly**
 
 ```bash
-git clone git@github.com:NeptualPG/SnoopyDopy.git
-cd SnoopyDopy
+git clone git@github.com:NeptualPG/SnoopStyle.git
+cd SnoopStyle
 open index.html
 ```
 

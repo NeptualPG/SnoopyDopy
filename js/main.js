@@ -1,8 +1,8 @@
 /**
- * main.js — SnoopyDopy Cyberpunk Marketplace
+ * main.js — SnoopyDopy Product Reviews
  *
  * Application entry point.
- * Wires together all components: toggle, hero, and product grid.
+ * Wires together all components: toggle, hero, product grid, and currency switch.
  */
 
 import { PRODUCTS }        from "./data/products.js";
@@ -12,23 +12,25 @@ import { initToggle }      from "./components/toggle.js";
 
 // ── DOM References ──────────────────────────────────────────
 
-const heroImageEl    = document.querySelector(".hero-image");
-const heroTitleEl    = document.getElementById("heroTitle");
-const heroSubEl      = document.getElementById("heroSub");
-const metaTagEl      = document.getElementById("metaTag");
-const sectionTitleEl = document.getElementById("sectionTitle");
-const sectionCountEl = document.getElementById("sectionCount");
-const productsGridEl = document.getElementById("productsGrid");
-const toggleBtns     = document.querySelectorAll(".toggle-btn");
+const heroImageEl       = document.querySelector(".hero-image");
+const heroTitleEl       = document.getElementById("heroTitle");
+const heroSubEl         = document.getElementById("heroSub");
+const metaTagEl         = document.getElementById("metaTag");
+const sectionTitleEl    = document.getElementById("sectionTitle");
+const sectionCountEl    = document.getElementById("sectionCount");
+const productsGridEl    = document.getElementById("productsGrid");
+const toggleBtns        = document.querySelectorAll(".toggle-btn");
+const currencyToggleBtn = document.getElementById("currencyToggle");
 
 // ── Initial Theme ───────────────────────────────────────────
 
-const DEFAULT_THEME = "me";
+const DEFAULT_THEME    = "me";
+const DEFAULT_CURRENCY = "cop"; // "cop" | "usd"
 
-// ── Switch Handler ──────────────────────────────────────────
+// ── Seller toggle handler ───────────────────────────────────
 
 /**
- * Called whenever the theme changes.
+ * Called whenever the seller theme changes.
  * Updates hero copy and re-renders the product grid.
  * @param {string} theme - "me" or "gf"
  */
@@ -44,13 +46,37 @@ function handleThemeChange(theme) {
   renderProducts(productsGridEl, PRODUCTS, theme, sectionCountEl);
 }
 
+// ── Currency toggle ─────────────────────────────────────────
+
+/**
+ * Flips the data-currency attribute on <body> between "cop" and "usd".
+ * CSS handles showing/hiding .price-cop vs .price-usd on every card.
+ */
+function handleCurrencyToggle() {
+  const current = document.body.getAttribute("data-currency");
+  const next    = current === "cop" ? "usd" : "cop";
+
+  document.body.setAttribute("data-currency", next);
+
+  // Update button labels so active/inactive swap
+  const activeEl   = currencyToggleBtn.querySelector(".currency-toggle-active");
+  const inactiveEl = currencyToggleBtn.querySelector(".currency-toggle-inactive");
+
+  activeEl.textContent   = next.toUpperCase();
+  inactiveEl.textContent = current.toUpperCase();
+
+  currencyToggleBtn.setAttribute(
+    "aria-label",
+    `Showing prices in ${next.toUpperCase()}. Click to switch to ${current.toUpperCase()}`
+  );
+}
+
 // ── Init ────────────────────────────────────────────────────
 
-// Set initial body theme attribute
-document.body.setAttribute("data-theme", DEFAULT_THEME);
+document.body.setAttribute("data-theme",    DEFAULT_THEME);
+document.body.setAttribute("data-currency", DEFAULT_CURRENCY);
 
-// Boot toggle (does NOT call handleThemeChange for initial state)
 initToggle(toggleBtns, handleThemeChange, DEFAULT_THEME);
-
-// Initial render
 handleThemeChange(DEFAULT_THEME);
+
+currencyToggleBtn.addEventListener("click", handleCurrencyToggle);

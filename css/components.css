@@ -1,5 +1,5 @@
 /* =============================================================
-   components.css — SnoopyDopy Cyberpunk Marketplace
+   components.css — SnoopyDopy Product Reviews
    Reusable UI components: header, toggle, hero, cards, footer.
 ============================================================= */
 
@@ -209,6 +209,38 @@ body::before {
   transition: text-shadow var(--transition-slow);
 }
 
+/* ── Decorative Snoopy ─────────────────────────────────────── */
+
+.hero-snoopy {
+  position: absolute;
+  bottom: 0;
+  right: 6%;
+  height: 92%;
+  width: auto;
+  object-fit: contain;
+  object-position: bottom;
+  pointer-events: none;
+  user-select: none;
+  /* gentle neon tint + fade so it blends with the dark overlay */
+  filter: drop-shadow(0 0 18px var(--accent)) drop-shadow(0 0 40px var(--accent-soft));
+  opacity: 0.88;
+  animation: snoopyFloat 6s ease-in-out infinite;
+  transition: filter var(--transition-theme), opacity var(--transition-theme);
+  z-index: 1;
+}
+
+@keyframes snoopyFloat {
+  0%, 100% { transform: translateY(0px);   }
+  50%       { transform: translateY(-10px); }
+}
+
+/* Hide on small screens so it doesn't overlap the text */
+@media (max-width: 600px) {
+  .hero-snoopy { display: none; }
+}
+
+/* ── Hero sub ──────────────────────────────────────────────── */
+
 .hero-sub {
   margin-top: 18px;
   font-size: 16px;
@@ -399,17 +431,274 @@ body::before {
 
 .card-price {
   font-family: var(--font-display);
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 800;
   color: var(--accent);
   text-shadow: var(--accent-glow);
   transition: all var(--transition-slow);
+  line-height: 1.1;
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+
+/* ── Currency show/hide via body[data-currency] ────────────── */
+
+/* Default (COP): show COP, hide USD */
+body[data-currency="cop"] .price-cop { display: contents; }
+body[data-currency="cop"] .price-usd { display: none;     }
+
+/* Switched (USD): show USD, hide COP */
+body[data-currency="usd"] .price-cop { display: none;     }
+body[data-currency="usd"] .price-usd { display: contents; }
+
+/* ── Currency toggle button ────────────────────────────────── */
+
+.currency-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 12px;
+  background: var(--panel);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-display);
+  font-size: 10px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition:
+    background var(--transition-fast),
+    box-shadow var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.currency-toggle-btn:hover,
+.currency-toggle-btn:focus-visible {
+  background: var(--accent-soft);
+  box-shadow: var(--accent-glow);
+  outline: none;
+}
+
+/* Active label — bright accent */
+.currency-toggle-active {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* Separator */
+.currency-toggle-sep {
+  color: var(--border);
+  font-weight: 400;
+}
+
+/* Inactive label — muted */
+.currency-toggle-inactive {
+  color: var(--muted);
+  font-weight: 400;
+}
+
+/* Approximate USD conversion shown beneath the COP price */
+.card-price-usd {
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: var(--muted);
+  margin-top: 3px;
 }
 
 .card-price .currency {
   font-size: 14px;
   margin-right: 2px;
   opacity: 0.8;
+}
+
+/* ── View Product button ───────────────────────────────────── */
+
+.view-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: var(--space-md);
+  padding: 9px 16px;
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 2px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  position: relative;
+  transition: color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.view-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  transform: translateX(-101%);
+  transition: transform var(--transition-base);
+  z-index: -1;
+}
+
+.view-btn:hover,
+.view-btn:focus-visible {
+  color: #000;
+  box-shadow: var(--accent-glow);
+  outline: none;
+}
+
+.view-btn:hover::before,
+.view-btn:focus-visible::before {
+  transform: translateX(0);
+}
+
+/* ── Card meta row (owner badge + overall stars) ──────────── */
+
+.card-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.card-overall-rating {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.rating-count {
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--muted);
+}
+
+/* ── Price row ─────────────────────────────────────────────── */
+
+.card-price-row {
+  margin-bottom: var(--space-md);
+}
+
+/* ── Stars ─────────────────────────────────────────────────── */
+
+.stars {
+  display: inline-flex;
+  gap: 2px;
+  line-height: 1;
+}
+
+.overall-stars .star {
+  font-size: 15px;
+}
+
+.review-stars .star {
+  font-size: 13px;
+}
+
+.star-on  { color: var(--accent); text-shadow: 0 0 6px var(--accent); }
+.star-off { color: var(--border); }
+
+/* ── Review block ──────────────────────────────────────────── */
+
+.card-review {
+  border-top: 1px solid var(--border);
+  padding-top: var(--space-md);
+  margin-top: var(--space-md);
+}
+
+.review-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.review-author {
+  font-family: var(--font-display);
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--accent);
+}
+
+.review-text {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--muted);
+  font-style: italic;
+  margin-bottom: var(--space-md);
+}
+
+/* ── Helpful button ────────────────────────────────────────── */
+
+.review-foot {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.helpful-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-display);
+  font-size: 10px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition:
+    color var(--transition-fast),
+    border-color var(--transition-fast),
+    background var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.helpful-btn:hover,
+.helpful-btn:focus-visible {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  outline: none;
+}
+
+.helpful-btn--active {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  box-shadow: var(--accent-glow);
+}
+
+.helpful-icon {
+  font-size: 10px;
+  transition: transform var(--transition-fast);
+}
+
+.helpful-btn--active .helpful-icon {
+  transform: translateY(-1px);
+}
+
+.helpful-count {
+  font-weight: 700;
+  color: var(--text);
+  min-width: 16px;
+  text-align: center;
+  transition: color var(--transition-fast);
+}
+
+.helpful-btn--active .helpful-count {
+  color: var(--accent);
 }
 
 /* ── Buy / Contact Button ──────────────────────────────────── */
@@ -451,6 +740,108 @@ body::before {
 .buy-btn:hover::before,
 .buy-btn:focus-visible::before {
   transform: translateX(0);
+}
+
+/* ── Product Card Gallery ──────────────────────────────────── */
+
+/*
+ * Wraps the image + arrows + dots for multi-image products.
+ * Products with a single image use .card-img directly — no wrapper.
+ */
+.card-gallery {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Fade transition between slides */
+.gallery-img {
+  transition: opacity 0.15s ease;
+}
+
+.gallery-img.gallery-transitioning {
+  opacity: 0;
+}
+
+/* ── Prev / Next arrows ────────────────────────────────────── */
+
+.gallery-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 32px;
+  height: 48px;
+  background: rgba(7, 7, 13, 0.65);
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition:
+    opacity var(--transition-fast),
+    background var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.card-gallery:hover .gallery-arrow,
+.card:focus .gallery-arrow {
+  opacity: 1;
+}
+
+.gallery-prev { left:  8px; }
+.gallery-next { right: 8px; }
+
+.gallery-arrow:hover,
+.gallery-arrow:focus-visible {
+  background: var(--accent-soft);
+  box-shadow: var(--accent-glow);
+  outline: none;
+}
+
+/* ── Dot indicators ────────────────────────────────────────── */
+
+.gallery-dots {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  z-index: 2;
+}
+
+.gallery-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--muted);
+  border: 1px solid transparent;
+  cursor: pointer;
+  padding: 0;
+  transition:
+    background var(--transition-fast),
+    box-shadow var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.gallery-dot.active {
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+  transform: scale(1.25);
+}
+
+.gallery-dot:hover:not(.active) {
+  background: var(--text);
+}
+
+.gallery-dot:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
 /* ── Footer ────────────────────────────────────────────────── */
