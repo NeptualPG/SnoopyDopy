@@ -1,6 +1,6 @@
 # 💜 Guía de Eimy para SnoopyDopy
 
-Hola amor! Esta es tu guía para que puedas agregar tus productos, escribir tus reseñas y actualizar el sitio tú sola. No necesitas saber programar — solo sigue los pasos.
+Hola amor! Esta es tu guía para que puedas agregar tus productos, escribir tus reseñas y actualizar el sitio tú sola. solo sigue los pasos.
 
 ---
 
